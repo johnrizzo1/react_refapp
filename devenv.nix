@@ -7,7 +7,32 @@
   languages.javascript.npm.enable = true;
   languages.javascript.pnpm.enable = true;
   languages.typescript.enable = true;
+  
+  dotenv.enable = true;
+  
   services.postgres.enable = true;
+  services.postgres.listen_addresses = "0.0.0.0";
+  services.postgres.port = 5432;
+  # services.postgres.initialDatabases = [
+  #   { name = "verceldb"; }
+  # ];
+
+  services.postgres.settings = {
+    log_connections = true;
+    log_statement = "all";
+    logging_collector = true;
+    log_disconnections = true;
+    log_destination = lib.mkForce "syslog";
+  };
+
+  services.postgres.initialDatabases = [
+    {
+      name = "verceldb";
+      pass = "verceluser";
+      user = "verceluser";
+    }
+  ];
+
   enterShell = ''
     git --version
   '';
