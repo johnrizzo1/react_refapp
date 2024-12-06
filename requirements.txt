@@ -1,6 +1,6 @@
 asgiref==3.8.1
 build==1.2.2
-Django==5.1.1
+Django==5.1.4
 django-debug-toolbar==4.4.6
 packaging==24.1
 pyproject_hooks==1.2.0
